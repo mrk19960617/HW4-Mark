@@ -7,9 +7,11 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find_by({ "id" => params["id"] })
     @entries = Entry.where({ "place_id" => @place["id"] })
+    @user = User.find_by({ "id" => session["user_id"] })
   end
 
-  def new
+  def
+    @user = User.find_by({ "id" => session["user_id"] })
   end
 
   def create
@@ -20,3 +22,4 @@ class PlacesController < ApplicationController
   end
 
 end
+
