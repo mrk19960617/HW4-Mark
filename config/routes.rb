@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources "places"
   resources "sessions"
   resources "users"
+  resources :entries
   get("/login", { :controller => "sessions", :action => "new" })
   get("/signup", { :controller => "users", :action => "new" })
   get("/posts", { :controller => "places", :action => "index" })

@@ -1,19 +1,29 @@
-<h1 class="mb-4">New Tacogram Entry</h1>
+<h1 class="mb-4">New Entry</h1>
 
 <%= form_with model: @entry, local: true, html: { multipart: true } do |form| %>
   <div class="mb-3">
-    <%= form.label :title, "Title" %>
+    <%= form.label :title %>
     <%= form.text_field :title, class: "form-control", required: true %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :description, "Description" %>
+    <%= form.label :description %>
     <%= form.text_area :description, class: "form-control", rows: 4, required: true %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :photo, "Upload Photo" %>
-    <%= form.file_field :photo, class: "form-control" %>
+    <%= form.label :occurred_on, "Date" %>
+    <%= form.date_field :occurred_on, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :place_id, "Place" %>
+    <%= form.collection_select :place_id, Place.all, :id, :name, prompt: "Select a place", class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :uploaded_image, "Upload Image" %>
+    <%= form.file_field :uploaded_image, class: "form-control", accept: "image/png,image/jpg,image/jpeg,image/gif" %>
   </div>
 
   <%= form.submit "Create Entry", class: "btn btn-primary" %>
